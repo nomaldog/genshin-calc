@@ -35,8 +35,8 @@
             <label>【現在Lv突破：済】<select id="input_break_org" class="form-control"><option value="0">なし</option><option value="1">あり</option></select></label>
             <label>【目標Lv突破：要】<select id="input_break_nxt" class="form-control"><option value="0">なし</option><option value="1">あり</option></select></label>
             <label>【キャラ】
-              <select id="input_chara" class="form-control">
-                <option v-for="item in items" value="">{{ item.name }}</option>
+              <select v-model="selected" id="input_chara" class="form-control">
+                <option v-for="character in characters" :value="character.name">{{ character.name }}</option>
               </select>
             </label>
 
@@ -48,7 +48,7 @@
           <table id="result_table" class="table table-bordered m-1">
             <thead>
               <tr>
-                <th>経験値(大英雄★4)</th>
+                <th>経験値(冒険家★4)</th>
                 <th>経験値(冒険家★3)</th>
                 <th>経験値(流浪者★2)</th>
                 <th>モラ</th>
@@ -67,10 +67,10 @@
           <table id="result_table2" class="table table-bordered m-1">
             <thead>
               <tr>
-                <th>特産品</th>
-                <th>通常素材(★1)</th>
-                <th>通常素材(★2)</th>
-                <th>通常素材(★3)</th>
+                <th>{{ characters.find((v) => v.name === selected).local_material}}</th>
+                <th>{{ characters.find((v) => v.name === selected).star1_material}}</th>
+                <th>{{ characters.find((v) => v.name === selected).star2_material}}</th>
+                <th>{{ characters.find((v) => v.name === selected).star3_material}}</th>
               </tr>
             </thead>
             <tbody>
