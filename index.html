@@ -11,124 +11,104 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
     <!-- Bootstrap Default -->
 
+    <!-- Vue.js -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="./app.js"></script>
+    <!-- Vue.js -->
+
     <script src="calc.js?version=11"></script>
     <link rel="stylesheet" href="style.css?version=11">
 
   </head>
   <body>
-    <div id="main_container" class="container container-fluid">
-      <nav id="headnav" class="navbar navbar-expand-sm navbar-dark">
-          <a href="#" class="navbar-brand">原神 キャラ育成コスト計算機β</a>
-      </nav>
+    <div id="app">
+      <div id="main_container" class="container container-fluid">
+        <nav id="headnav" class="navbar navbar-expand-sm navbar-dark">
+            <a href="#" class="navbar-brand">原神 キャラ育成コスト計算機β</a>
+        </nav>
 
-      <main role="main" class="container">
-        <div class="form-group">
-          <label>【現在Level】<input type="number" min="1" max="90" class="form-control" id="input_org" value="1"></label>
-          <label>【目標Level】<input type="number" min="1" max="90" class="form-control" id="input_nxt" value="90"></label>
-          <label>【現在Lv突破：済】<select id="input_break_org" class="form-control"><option value="0">なし</option><option value="1">あり</option></select></label>
-          <label>【目標Lv突破：要】<select id="input_break_nxt" class="form-control"><option value="0">なし</option><option value="1">あり</option></select></label>
-          <label>【キャラ】
-            <select id="input_chara" class="form-control">
-              <option value="X">なし</option>
-              <option value="-6">甘雨</option>
-              <option value="-5">アルベド</option>
-              <option value="-4">鍾離</option>
-              <option value="-3">辛炎</option>
-              <option value="-2">タルタリヤ</option>
-              <option value="-1">ディオナ</option>
-              <option value="0">アンバー</option>
-              <option value="1">バーバラ</option>
-              <option value="2">北斗</option>
-              <option value="3">ベネット</option>
-              <option value="4">重雲</option>
-              <option value="5">ディルック</option>
-              <option value="6">フィッシュル</option>
-              <option value="7">ジン</option>
-              <option value="8">ガイア</option>
-              <option value="9">刻晴</option>
-              <option value="10">クレー</option>
-              <option value="11">リサ</option>
-              <option value="12">モナ</option>
-              <option value="13">凝光</option>
-              <option value="14">ノエル</option>
-              <option value="15">七七</option>
-              <option value="16">レザー</option>
-              <option value="17">スクロース</option>
-              <option value="18">主人公</option>
-              <option value="19">ウェンティ</option>
-              <option value="20">香菱</option>
-              <option value="21">行秋</option>
-            </select>
-          </label>
+        <main role="main" class="container">
+          <div class="form-group">
+            <label>【現在Level】<input type="number" min="1" max="90" class="form-control" id="input_org" value="1"></label>
+            <label>【目標Level】<input type="number" min="1" max="90" class="form-control" id="input_nxt" value="90"></label>
+            <label>【現在Lv突破：済】<select id="input_break_org" class="form-control"><option value="0">なし</option><option value="1">あり</option></select></label>
+            <label>【目標Lv突破：要】<select id="input_break_nxt" class="form-control"><option value="0">なし</option><option value="1">あり</option></select></label>
+            <label>【キャラ】
+              <select id="input_chara" class="form-control">
+                <option v-for="item in items" value="">{{ item.name }}</option>
+              </select>
+            </label>
 
-          <button type="button" class="btn btn-primary" onclick="OnButtonClick();">計算</button>
+            <button type="button" class="btn btn-primary" onclick="OnButtonClick();">計算</button>
 
-          <div id="result_message"></div>
-        </div>
+            <div id="result_message"></div>
+          </div>
 
-        <table id="result_table" class="table table-bordered m-1">
-          <thead>
-            <tr>
-              <th>経験値(大英雄★4)</th>
-              <th>経験値(冒険家★3)</th>
-              <th>経験値(流浪者★2)</th>
-              <th>モラ</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>0</td>
-              <td>0</td>
-              <td>0</td>
-              <td>0</td>
-            </tr>
-          </tbody>
-        </table>
-        
-        <table id="result_table2" class="table table-bordered m-1">
-          <thead>
-            <tr>
-              <th>特産品</th>
-              <th>通常素材(★1)</th>
-              <th>通常素材(★2)</th>
-              <th>通常素材(★3)</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>0</td>
-              <td>0</td>
-              <td>0</td>
-              <td>0</td>
-            </tr>
-          </tbody>
-        </table>
+          <table id="result_table" class="table table-bordered m-1">
+            <thead>
+              <tr>
+                <th>経験値(大英雄★4)</th>
+                <th>経験値(冒険家★3)</th>
+                <th>経験値(流浪者★2)</th>
+                <th>モラ</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+              </tr>
+            </tbody>
+          </table>
+          
+          <table id="result_table2" class="table table-bordered m-1">
+            <thead>
+              <tr>
+                <th>特産品</th>
+                <th>通常素材(★1)</th>
+                <th>通常素材(★2)</th>
+                <th>通常素材(★3)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+              </tr>
+            </tbody>
+          </table>
 
-        <table id="result_table3" class="table table-bordered m-1">
-          <thead>
-            <tr>
-              <th>精鋭魔物素材</th>
-              <th>属性砕屑(★2)</th>
-              <th>属性欠片(★3)</th>
-              <th>属性塊(★4)</th>
-              <th>属性クリスタル(★5)</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>0</td>
-              <td>0</td>
-              <td>0</td>
-              <td>0</td>
-              <td>0</td>
-            </tr>
-          </tbody>
-        </table>
+          <table id="result_table3" class="table table-bordered m-1">
+            <thead>
+              <tr>
+                <th>精鋭魔物素材</th>
+                <th>属性砕屑(★2)</th>
+                <th>属性欠片(★3)</th>
+                <th>属性塊(★4)</th>
+                <th>属性クリスタル(★5)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+              </tr>
+            </tbody>
+          </table>
 
-        <div>
-          <div>※ Lv90突破は現状存在しないため、モラや素材加算されません</div>
-          <div><a href="https://twitter.com/waifu_dog">Twitter@waifu_dog</a></div>
-          <div><a href="https://genshin-impact.fandom.com/wiki/Character_EXP">参考：Genshin Impact Wiki</a></div>
+          <div>
+            <div>※ Lv90突破は現状存在しないため、モラや素材加算されません</div>
+            <div><a href="https://twitter.com/waifu_dog">Twitter@waifu_dog</a></div>
+            <div><a href="https://genshin-impact.fandom.com/wiki/Character_EXP">参考：Genshin Impact Wiki</a></div>
+          </div>
         </div>
       </div>
     </main>
