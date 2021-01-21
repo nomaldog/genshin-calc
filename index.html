@@ -30,25 +30,26 @@
 
         <main role="main" class="container">
           <div class="form-group">
-            <label>【現在Level】<input type="number" min="1" max="90" class="form-control" id="input_org" value="1"></label>
-            <label>【目標Level】<input type="number" min="1" max="90" class="form-control" id="input_nxt" value="90"></label>
-            <label>【現在Lv突破：済】<select id="input_break_org" class="form-control"><option value="0">なし</option><option value="1">あり</option></select></label>
-            <label>【目標Lv突破：要】<select id="input_break_nxt" class="form-control"><option value="0">なし</option><option value="1">あり</option></select></label>
+            <label>【現在Level】<input v-model="input_org" type="number" min="1" max="90" class="form-control" value="1"></label>
+            <label>【目標Level】<input v-model="input_nxt" type="number" min="1" max="90" class="form-control" value="90"></label>
+            <label>【現在Lv突破：済】<select v-model="input_break_org" id="input_break_org" class="form-control"><option value="0">なし</option><option value="1">あり</option></select></label>
+            <label>【目標Lv突破：要】<select v-model="input_break_nxt" id="input_break_nxt" class="form-control"><option value="0">なし</option><option value="1">あり</option></select></label>
             <label>【キャラ】
-              <select v-model="selected" id="input_chara" class="form-control">
+              <select v-model="selected" class="form-control">
                 <option v-for="character in characters" :value="character.name">{{ character.name }}</option>
               </select>
             </label>
 
             <!--<button type="button" class="btn btn-primary" onclick="OnButtonClick();">計算</button>-->
 
+            <span style="display:none">{{ calc_exp }}</span>
             <div id="result_message"></div>
           </div>
 
-          <table id="result_table" class="table table-bordered m-1">
+          <table class="table table-bordered m-1">
             <thead>
               <tr>
-                <th>経験値(冒険家★4)</th>
+                <th>経験値(大英雄★4)</th>
                 <th>経験値(冒険家★3)</th>
                 <th>経験値(流浪者★2)</th>
                 <th>モラ</th>
@@ -56,10 +57,10 @@
             </thead>
             <tbody>
               <tr>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
+                <td>{{ exp_star4 }}</td>
+                <td>{{ exp_star3 }}</td>
+                <td>{{ exp_star2 }}</td>
+                <td>{{ mora }}</td>
               </tr>
             </tbody>
           </table>
