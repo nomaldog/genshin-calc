@@ -9,9 +9,9 @@ document.addEventListener("DOMContentLoaded", function(event) {
       // input
       selected:"なし",
       input_org:1,
-      input_nxt:90,
-      input_break_org:"0",
-      input_break_nxt:"0",
+      input_nxt:80,
+      input_break_org:false,
+      input_break_nxt:false,
       // result
       exp_star4:0 ,
       exp_star3:0 ,
@@ -42,8 +42,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
           const break_point = [20,40,50,60,70,80];
           let result_mora = nxt_row.total_mora - org_row.total_mora;
           break_point.forEach(function(bp,index){
-            if(this.input_break_nxt==="1" && bp == this.input_nxt) result_mora += 20000 * (index + 1);
-            if(this.input_break_org==="1" && bp == this.input_org) result_mora -= 20000 * (index + 1);
+            if(this.input_break_nxt && bp == this.input_nxt) result_mora += 20000 * (index + 1);
+            if(this.input_break_org && bp == this.input_org) result_mora -= 20000 * (index + 1);
           }, this);
           this.mora = result_mora.toLocaleString('ja-JP');
         }
@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
         // 必要素材カウント(0:特産, 1:魔物星1, 2:魔物星2, 3:魔物星3, 4:精鋭, 5:属性星2, 6:属性星3, 7:属性星4, 8:属性星5) * 現在値・目標値
         let need_mat = [[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]];
         for (let i = 0; i < 2; i++) {
-          let tgt_lv = (i==0 ? this.input_org + this.input_break_org : this.input_nxt + this.input_break_nxt);
+          let tgt_lv = (i==0 ? this.input_org + (this.input_break_org ? 1 : 0) : this.input_nxt + (this.input_break_nxt ? 1 : 0));
           if(tgt_lv > 20){
             need_mat[0][i] += 3;
             need_mat[1][i] += 3;

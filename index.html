@@ -1,44 +1,63 @@
 <!DOCTYPE html>
 <html lang="ja">
   <head>
+    <!-- Basic Definition -->
     <meta charset="utf-8">
-    <title>原神 キャラ育成コスト計算機β</title>
-
+    <title>原神 キャラ育成コスト計算機</title>
     <!-- Bootstrap Default -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
-    <!-- Bootstrap Default -->
-
     <!-- Vue.js -->
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="./app.js"></script>
-    <!-- Vue.js -->
-
-    <script src="calc.js?version=11"></script>
-    <link rel="stylesheet" href="style.css?version=11">
-
+    <!-- Personal CSS -->
+    <link rel="stylesheet" href="style.css?version=0">
   </head>
   <body>
     <div id="app">
       <div id="main_container" class="container container-fluid">
         <nav id="headnav" class="navbar navbar-expand-sm navbar-dark">
-            <a href="#" class="navbar-brand">原神 キャラ育成コスト計算機β</a>
+            <a href="#" class="navbar-brand">原神 キャラ育成コスト計算機</a>
         </nav>
 
         <main role="main" class="container">
+          <div class="container">
           <div class="form-group">
-            <label>【現在Level】<input v-model="input_org" type="number" min="1" max="90" class="form-control" value="1"></label>
-            <label>【目標Level】<input v-model="input_nxt" type="number" min="1" max="90" class="form-control" value="90"></label>
-            <label>【現在Lv突破：済】<select v-model="input_break_org" id="input_break_org" class="form-control"><option value="0">なし</option><option value="1">あり</option></select></label>
-            <label>【目標Lv突破：要】<select v-model="input_break_nxt" id="input_break_nxt" class="form-control"><option value="0">なし</option><option value="1">あり</option></select></label>
-            <label>【キャラ】
-              <select v-model="selected" class="form-control">
-                <option v-for="character in characters" :value="character.name">{{ character.name }}</option>
-              </select>
-            </label>
+            <div class="row">
+              <div class="col-sm-4">
+                <div class="form-inline">
+                <label class="form-label">現在レベル</label>
+                  <input v-model="input_org" type="number" min="1" max="90" class="form-control" value="1">
+                  <input v-model="input_break_org"class="form-check-input" type="checkbox" value="">
+                  <label class="form-label">突破時はチェック</label>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-4">
+                <div class="form-inline">
+                  <label class="form-label">目標レベル</label>
+                  <input v-model="input_nxt" type="number" min="1" max="90" class="form-control" value="90">
+                  <input v-model="input_break_nxt" class="form-check-input" type="checkbox" value="">
+                  <label class="form-label">突破時はチェック</label>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-4">
+                <div class="form-inline">
+                  <label class="form-label">キャラクター</label>
+                  <select v-model="selected" class="form-control">
+                    <option v-for="character in characters" :value="character.name">{{ character.name }}</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+
 
             <!--<button type="button" class="btn btn-primary" onclick="OnButtonClick();">計算</button>-->
 
@@ -105,12 +124,6 @@
               </tr>
             </tbody>
           </table>
-
-          <div>
-            <div>※ Lv90突破は現状存在しないため、モラや素材加算されません</div>
-            <div><a href="https://twitter.com/waifu_dog">Twitter@waifu_dog</a></div>
-            <div><a href="https://genshin-impact.fandom.com/wiki/Character_EXP">参考：Genshin Impact Wiki</a></div>
-          </div>
         </div>
       </div>
     </main>
