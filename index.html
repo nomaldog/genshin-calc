@@ -43,6 +43,7 @@
             <!--<button type="button" class="btn btn-primary" onclick="OnButtonClick();">計算</button>-->
 
             <span style="display:none">{{ calc_exp }}</span>
+            <span style="display:none">{{ calc_material }}</span>
             <div id="result_message"></div>
           </div>
 
@@ -76,10 +77,10 @@
             </thead>
             <tbody>
               <tr>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
+                <td>{{ local_material }}</td>
+                <td>{{ star1_material }}</td>
+                <td>{{ star2_material }}</td>
+                <td>{{ star3_material }}</td>
               </tr>
             </tbody>
           </table>

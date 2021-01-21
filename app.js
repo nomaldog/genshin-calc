@@ -9,14 +9,18 @@ document.addEventListener("DOMContentLoaded", function(event) {
       // input
       selected:"なし",
       input_org:1,
-      input_nxt:80,
+      input_nxt:90,
       input_break_org:"0",
-      input_break_nxt:"1",
+      input_break_nxt:"0",
       // result
       exp_star4:0 ,
       exp_star3:0 ,
       exp_star2:0 ,
-      mora:0
+      mora:0,
+      local_material:0,
+      star1_material:0,
+      star2_material:0,
+      star3_material:0
     },
     computed: {
       selected_character: function () {
@@ -43,6 +47,53 @@ document.addEventListener("DOMContentLoaded", function(event) {
           }, this);
           this.mora = result_mora.toLocaleString('ja-JP');
         }
+        return null;
+      },
+      calc_material: function(){
+        // 必要素材カウント(0:特産, 1:魔物星1, 2:魔物星2, 3:魔物星3, 4:精鋭, 5:属性星2, 6:属性星3, 7:属性星4, 8:属性星5) * 現在値・目標値
+        let need_mat = [[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]];
+        for (let i = 0; i < 2; i++) {
+          let tgt_lv = (i==0 ? this.input_org + this.input_break_org : this.input_nxt + this.input_break_nxt);
+          if(tgt_lv > 20){
+            need_mat[0][i] += 3;
+            need_mat[1][i] += 3;
+            need_mat[5][i] += 1;
+          }
+          if(tgt_lv > 40){
+            need_mat[0][i] += 10;
+            need_mat[1][i] += 15;
+            need_mat[4][i] += 2;
+            need_mat[6][i] += 3;
+          }
+          if(tgt_lv > 50){
+            need_mat[0][i] += 20;
+            need_mat[2][i] += 12;
+            need_mat[4][i] += 4;
+            need_mat[6][i] += 6;
+          }
+          if(tgt_lv > 60){
+            need_mat[0][i] += 30;
+            need_mat[2][i] += 18;
+            need_mat[4][i] += 8;
+            need_mat[7][i] += 3;
+          }
+          if(tgt_lv > 70){
+            need_mat[0][i] += 45;
+            need_mat[3][i] += 12;
+            need_mat[4][i] += 12;
+            need_mat[7][i] += 6;
+          }
+          if(tgt_lv > 80){
+            need_mat[0][i] += 60;
+            need_mat[3][i] += 24;
+            need_mat[4][i] += 20;
+            need_mat[8][i] += 6;
+          }
+        }
+        this.local_material = need_mat[0][1] - need_mat[0][0];
+        this.star1_material = need_mat[1][1] - need_mat[1][0];
+        this.star2_material = need_mat[2][1] - need_mat[2][0];
+        this.star3_material = need_mat[3][1] - need_mat[3][0];
         return null;
       }
     },
