@@ -12,7 +12,7 @@
     <!-- Vue.js -->
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script src="./app.js"></script>
+    <script src="./app.js?version=0"></script>
     <!-- Personal CSS -->
     <link rel="stylesheet" href="style.css?version=0">
   </head>
@@ -28,36 +28,36 @@
             <a href="#" class="navbar-brand">原神 キャラ育成コスト計算機</a>
         </nav>
 
-        <main role="main" class="container">
+        <main role="main" class="container pb-3">
           <div class="container">
-            <div class="form-group">
-              <div class="row">
-                <div class="col-sm-4">
+            <div class="form-group m-1">
+              <div class="row mb-1">
+                <div class="col-sm">
                   <div class="form-inline">
-                  <label class="form-label">現在レベル</label>
-                    <input v-model="input.org" type="number" min="1" max="90" class="form-control" value="1">
-                    <input v-model="input.break_org"class="form-check-input" type="checkbox" value="">
-                    <label class="form-label">突破時はチェック</label>
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-sm-4">
-                  <div class="form-inline">
-                    <label class="form-label">目標レベル</label>
-                    <input v-model="input.nxt" type="number" min="1" max="90" class="form-control" value="90">
-                    <input v-model="input.break_nxt" class="form-check-input" type="checkbox" value="">
-                    <label class="form-label">突破時はチェック</label>
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-sm-4">
-                  <div class="form-inline">
-                    <label class="form-label">キャラクター</label>
+                    <label class="form-label mr-2">キャラクター</label>
                     <select v-model="input.selected" class="form-control">
                       <option v-for="character in characters" :value="character.name">{{ character.name }}</option>
                     </select>
+                  </div>
+                </div>
+              </div>
+              <div class="row mb-1">
+                <div class="col-sm">
+                  <div class="form-inline">
+                  <label class="form-label mr-2">現在レベル</label>
+                    <input v-model="input.org" type="number" min="1" max="90" class="form-control mr-2" value="1">
+                    <input v-model="input.break_org"class="form-check-input " type="checkbox" value="">
+                    <label class="form-label">突破時はチェック</label>
+                  </div>
+                </div>
+              </div>
+              <div class="row mb-1">
+                <div class="col-sm">
+                  <div class="form-inline">
+                    <label class="form-label mr-2">目標レベル</label>
+                    <input v-model="input.nxt" type="number" min="1" max="90" class="form-control mr-2" value="90">
+                    <input v-model="input.break_nxt" class="form-check-input" type="checkbox" value="">
+                    <label class="form-label">突破時はチェック</label>
                   </div>
                 </div>
               </div>
@@ -65,7 +65,7 @@
             <div id="result_message"></div>
           </div>
 
-          <table class="table table-bordered m-1">
+          <table class="table table-bordered m-2">
             <thead>
               <tr>
                 <th>経験値(大英雄★4)</th>
@@ -84,7 +84,7 @@
             </tbody>
           </table>
           
-          <table class="table table-bordered m-1">
+          <table class="table table-bordered m-2">
             <thead>
               <tr>
                 <th>{{ selected_character.local_material}}</th>
@@ -103,7 +103,7 @@
             </tbody>
           </table>
 
-          <table class="table table-bordered m-1">
+          <table class="table table-bordered m-2">
             <thead>
               <tr>
                 <th>精鋭魔物素材</th>
