@@ -14,7 +14,7 @@
     { "name": "フィッシュル",  "element": "雷",  "local_material": "イグサ",  "star1_material": "牢固な矢先",  "star2_material": "鋭利な矢先",  "star3_material": "歴戦の矢先"}, 
     { "name": "ジン",  "element": "風",  "local_material": "蒲公英の種",  "star1_material": "破損した仮面",  "star2_material": "汚れた仮面",  "star3_material": "不吉な仮面"}, 
     { "name": "ガイア",  "element": "氷",  "local_material": "ドドリアン",  "star1_material": "宝探しの鴉マーク",  "star2_material": "シルバーの鴉マーク",  "star3_material": "ゴールドの鴉マーク"}, 
-    { "name": "刻星",  "element": "雷",  "local_material": "石珀",  "star1_material": "トリックフラワーの蜜",  "star2_material": "微光花の蜜",  "star3_material": "原素花の蜜"}, 
+    { "name": "刻晴",  "element": "雷",  "local_material": "石珀",  "star1_material": "トリックフラワーの蜜",  "star2_material": "微光花の蜜",  "star3_material": "原素花の蜜"}, 
     { "name": "クレー",  "element": "炎",  "local_material": "慕風のマッシュルーム",  "star1_material": "占いの絵巻",  "star2_material": "封魔の絵巻",  "star3_material": "禁呪の絵巻"}, 
     { "name": "リサ",  "element": "雷",  "local_material": "ヴァルベリー",  "star1_material": "スライムの液体",  "star2_material": "スライムの分泌物",  "star3_material": "スライムのピュレ"}, 
     { "name": "モナ",  "element": "水",  "local_material": "慕風のマッシュルーム",  "star1_material": "トリックフラワーの蜜",  "star2_material": "微光花の蜜",  "star3_material": "原素花の蜜"}, 
