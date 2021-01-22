@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
         this.result.demon1_material = nxt_row.demon1 - org_row.demon1;
         this.result.demon2_material = nxt_row.demon2 - org_row.demon2;
         this.result.demon3_material = nxt_row.demon3 - org_row.demon3;
-        this.result.elite_material = nxt_row.elite - org_row.elite;
+        this.result.elite_material = this.selected_character.name === "主人公" ? 0 : nxt_row.elite - org_row.elite;
         this.result.elem2_material = nxt_row.elem2 - org_row.elem2;
         this.result.elem3_material = nxt_row.elem3 - org_row.elem3;
         this.result.elem4_material = nxt_row.elem4 - org_row.elem4;
