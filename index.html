@@ -19,8 +19,7 @@
   <body>
     <div id="app">
       <!--Internal calculation-->
-      <span style="display:none">{{ calc_exp }}</span>
-      <span style="display:none">{{ calc_material }}</span>
+      <span style="display:none">{{ calcCost }}</span>
 
       <!--Contents-->
       <div id="main_container" class="container container-fluid">
@@ -62,7 +61,7 @@
                 </div>
               </div>
             </div>
-            <div id="result_message"></div>
+            <div id="result_message" v-bind:class="result.message_style">{{ result.message }}</div>
           </div>
 
           <table class="table table-bordered m-2">
