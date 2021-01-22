@@ -18,6 +18,11 @@
   </head>
   <body>
     <div id="app">
+      <!--Internal calculation-->
+      <span style="display:none">{{ calc_exp }}</span>
+      <span style="display:none">{{ calc_material }}</span>
+
+      <!--Contents-->
       <div id="main_container" class="container container-fluid">
         <nav id="headnav" class="navbar navbar-expand-sm navbar-dark">
             <a href="#" class="navbar-brand">原神 キャラ育成コスト計算機</a>
@@ -25,44 +30,38 @@
 
         <main role="main" class="container">
           <div class="container">
-          <div class="form-group">
-            <div class="row">
-              <div class="col-sm-4">
-                <div class="form-inline">
-                <label class="form-label">現在レベル</label>
-                  <input v-model="input_org" type="number" min="1" max="90" class="form-control" value="1">
-                  <input v-model="input_break_org"class="form-check-input" type="checkbox" value="">
-                  <label class="form-label">突破時はチェック</label>
+            <div class="form-group">
+              <div class="row">
+                <div class="col-sm-4">
+                  <div class="form-inline">
+                  <label class="form-label">現在レベル</label>
+                    <input v-model="input.org" type="number" min="1" max="90" class="form-control" value="1">
+                    <input v-model="input.break_org"class="form-check-input" type="checkbox" value="">
+                    <label class="form-label">突破時はチェック</label>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-4">
+                  <div class="form-inline">
+                    <label class="form-label">目標レベル</label>
+                    <input v-model="input.nxt" type="number" min="1" max="90" class="form-control" value="90">
+                    <input v-model="input.break_nxt" class="form-check-input" type="checkbox" value="">
+                    <label class="form-label">突破時はチェック</label>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-4">
+                  <div class="form-inline">
+                    <label class="form-label">キャラクター</label>
+                    <select v-model="input.selected" class="form-control">
+                      <option v-for="character in characters" :value="character.name">{{ character.name }}</option>
+                    </select>
+                  </div>
                 </div>
               </div>
             </div>
-            <div class="row">
-              <div class="col-sm-4">
-                <div class="form-inline">
-                  <label class="form-label">目標レベル</label>
-                  <input v-model="input_nxt" type="number" min="1" max="90" class="form-control" value="90">
-                  <input v-model="input_break_nxt" class="form-check-input" type="checkbox" value="">
-                  <label class="form-label">突破時はチェック</label>
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-sm-4">
-                <div class="form-inline">
-                  <label class="form-label">キャラクター</label>
-                  <select v-model="selected" class="form-control">
-                    <option v-for="character in characters" :value="character.name">{{ character.name }}</option>
-                  </select>
-                </div>
-              </div>
-            </div>
-          </div>
-
-
-            <!--<button type="button" class="btn btn-primary" onclick="OnButtonClick();">計算</button>-->
-
-            <span style="display:none">{{ calc_exp }}</span>
-            <span style="display:none">{{ calc_material }}</span>
             <div id="result_message"></div>
           </div>
 
@@ -77,15 +76,15 @@
             </thead>
             <tbody>
               <tr>
-                <td>{{ exp_star4 }}</td>
-                <td>{{ exp_star3 }}</td>
-                <td>{{ exp_star2 }}</td>
-                <td>{{ mora }}</td>
+                <td>{{ result.exp_book4 }}</td>
+                <td>{{ result.exp_book3 }}</td>
+                <td>{{ result.exp_book2 }}</td>
+                <td>{{ result.mora }}</td>
               </tr>
             </tbody>
           </table>
           
-          <table id="result_table2" class="table table-bordered m-1">
+          <table class="table table-bordered m-1">
             <thead>
               <tr>
                 <th>{{ selected_character.local_material}}</th>
@@ -96,15 +95,15 @@
             </thead>
             <tbody>
               <tr>
-                <td>{{ local_material }}</td>
-                <td>{{ star1_material }}</td>
-                <td>{{ star2_material }}</td>
-                <td>{{ star3_material }}</td>
+                <td>{{ result.local_material }}</td>
+                <td>{{ result.demon1_material }}</td>
+                <td>{{ result.demon2_material }}</td>
+                <td>{{ result.demon3_material }}</td>
               </tr>
             </tbody>
           </table>
 
-          <table id="result_table3" class="table table-bordered m-1">
+          <table class="table table-bordered m-1">
             <thead>
               <tr>
                 <th>精鋭魔物素材</th>
@@ -116,16 +115,17 @@
             </thead>
             <tbody>
               <tr>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
+                <td>{{ result.elite_material }}</td>
+                <td>{{ result.elem2_material }}</td>
+                <td>{{ result.elem3_material }}</td>
+                <td>{{ result.elem4_material }}</td>
+                <td>{{ result.elem5_material }}</td>
               </tr>
             </tbody>
           </table>
-        </div>
-      </div>
+
+        </div><!-- main_container(Bootstrap) -->
+      </div><!-- app(Vue.js) -->
     </main>
   </body>
 </html>
