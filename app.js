@@ -33,6 +33,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
         return this.characters ? this.characters.find((v) => v.name === this.input.selected) : {'name': 'なし',  'element': 'なし',  'local_material': '特産品',  'star1_material': '魔物素材(★1)',  'star2_material': '魔物素材(★2)',  'star3_material': '魔物素材(★3)'};
       },
       calcCost: function(){
+        // pre error check
         if(!this.exp_table || !this.characters){
           return;
         }else if(this.input.org === '' || this.input.nxt === ''){
@@ -57,6 +58,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
           this.result.message_style = '';
         }
 
+        // calc exp and mora
         const nxt_row = this.exp_table.find((v) => v.level == Number(this.input.nxt));
         const org_row = this.exp_table.find((v) => v.level == Number(this.input.org));
         
