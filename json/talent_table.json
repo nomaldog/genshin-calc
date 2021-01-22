@@ -1,0 +1,12 @@
+[
+    { "level": "1",  "talent2": "0",  "talent3": "0",  "talent4": "0",  "demon1": "0",  "demon2": "0",  "demon3": "0",  "weekly": "0",  "crown": "0",  "mora": "0"}, 
+    { "level": "2",  "talent2": "3",  "talent3": "0",  "talent4": "0",  "demon1": "6",  "demon2": "0",  "demon3": "0",  "weekly": "0",  "crown": "0",  "mora": "12500"}, 
+    { "level": "3",  "talent2": "3",  "talent3": "2",  "talent4": "0",  "demon1": "6",  "demon2": "3",  "demon3": "0",  "weekly": "0",  "crown": "0",  "mora": "30000"}, 
+    { "level": "4",  "talent2": "3",  "talent3": "6",  "talent4": "0",  "demon1": "6",  "demon2": "7",  "demon3": "0",  "weekly": "0",  "crown": "0",  "mora": "55000"}, 
+    { "level": "5",  "talent2": "3",  "talent3": "12",  "talent4": "0",  "demon1": "6",  "demon2": "13",  "demon3": "0",  "weekly": "0",  "crown": "0",  "mora": "85000"}, 
+    { "level": "6",  "talent2": "3",  "talent3": "21",  "talent4": "0",  "demon1": "6",  "demon2": "22",  "demon3": "0",  "weekly": "0",  "crown": "0",  "mora": "122500"}, 
+    { "level": "7",  "talent2": "3",  "talent3": "21",  "talent4": "4",  "demon1": "6",  "demon2": "22",  "demon3": "4",  "weekly": "1",  "crown": "0",  "mora": "242500"}, 
+    { "level": "8",  "talent2": "3",  "talent3": "21",  "talent4": "10",  "demon1": "6",  "demon2": "22",  "demon3": "10",  "weekly": "2",  "crown": "0",  "mora": "502500"}, 
+    { "level": "9",  "talent2": "3",  "talent3": "21",  "talent4": "22",  "demon1": "6",  "demon2": "22",  "demon3": "19",  "weekly": "4",  "crown": "0",  "mora": "952500"}, 
+    { "level": "10",  "talent2": "3",  "talent3": "21",  "talent4": "38",  "demon1": "6",  "demon2": "22",  "demon3": "31",  "weekly": "6",  "crown": "1",  "mora": "1652500"}
+]
