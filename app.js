@@ -39,14 +39,14 @@ document.addEventListener('DOMContentLoaded', function(event) {
     computed: {
       selected_character: function () {
         return this.characters ? this.characters.find((v) => v.name === this.input.character) 
-                               : {'name': 'なし',
-                                  'element': 'なし',
-                                  'local_material': '特産品',
-                                  'star1_material': '魔物素材(★1)',
-                                  'star2_material': '魔物素材(★2)',
-                                  'star3_material': '魔物素材(★3)',
-                                   'talent': '天賦専用素',
-                                   'weekly': '週次限定BOSS素材'
+                               : {'name': '',
+                                  'element': '',
+                                  'local_material': '',
+                                  'star1_material': '',
+                                  'star2_material': '',
+                                  'star3_material': '',
+                                   'talent': '',
+                                   'weekly': ''
                                 };
       },
       calcCost: function(){
