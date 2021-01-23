@@ -5,7 +5,7 @@
     { "name": "鍾離",  "element": "岩",  "local_material": "石珀",  "star1_material": "スライムの液体",  "star2_material": "スライムの分泌物",  "star3_material": "スライムのピュレ",  "talent": "黄金巻物",  "weekly": "吞天の鯨・只角"}, 
     { "name": "辛炎",  "element": "炎",  "local_material": "イグサ",  "star1_material": "宝探しの鴉マーク",  "star2_material": "シルバーの鴉マーク",  "star3_material": "ゴールドの鴉マーク",  "talent": "黄金巻物",  "weekly": "吞天の鯨・只角"}, 
     { "name": "タルタリヤ",  "element": "水",  "local_material": "星螺",  "star1_material": "新兵の記章",  "star2_material": "士官の記章",  "star3_material": "尉官の記章",  "talent": "自由本",  "weekly": "魔王の刃・残片"}, 
-    { "name": "ディオネ",  "element": "氷",  "local_material": "ドドリアン",  "star1_material": "牢固な矢先",  "star2_material": "鋭利な矢先",  "star3_material": "歴戦の矢先",  "talent": "自由本",  "weekly": "魔王の刃・残片"}, 
+    { "name": "ディオナ",  "element": "氷",  "local_material": "ドドリアン",  "star1_material": "牢固な矢先",  "star2_material": "鋭利な矢先",  "star3_material": "歴戦の矢先",  "talent": "自由本",  "weekly": "魔王の刃・残片"}, 
     { "name": "アンバー",  "element": "炎",  "local_material": "イグサ",  "star1_material": "牢固な矢先",  "star2_material": "鋭利な矢先",  "star3_material": "歴戦の矢先",  "talent": "自由本",  "weekly": "東風の吐息"}, 
     { "name": "バーバラ",  "element": "水",  "local_material": "慕風のマッシュルーム",  "star1_material": "占いの絵巻",  "star2_material": "封魔の絵巻",  "star3_material": "禁呪の絵巻",  "talent": "自由本",  "weekly": "北風のリング"}, 
     { "name": "北斗",  "element": "雷",  "local_material": "夜泊石",  "star1_material": "宝探しの鴉マーク",  "star2_material": "シルバーの鴉マーク",  "star3_material": "ゴールドの鴉マーク",  "talent": "黄金巻物",  "weekly": "東風の吐息"}, 
