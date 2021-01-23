@@ -132,9 +132,9 @@ document.addEventListener('DOMContentLoaded', function(event) {
       }
     },
     mounted: function () {
-      axios.get('./json/characters.json').then(response => (this.characters = response.data));
-      axios.get('./json/exp_table.json').then(response => (this.exp_table = response.data));
-      axios.get('./json/talent_table.json').then(response => (this.talent_table = response.data));
+      axios.get('./json/characters.json?timestamp=${new Date().getTime()}').then(response => (this.characters = response.data));
+      axios.get('./json/exp_table.json?timestamp=${new Date().getTime()}').then(response => (this.exp_table = response.data));
+      axios.get('./json/talent_table.json?timestamp=${new Date().getTime()}').then(response => (this.talent_table = response.data));
     }
   })
 })
