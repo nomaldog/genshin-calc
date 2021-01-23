@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
         nxt:80,
         break_org:false,
         break_nxt:false,
-        talents:[{before:1, after:1, name:'天賦1'},{before:1, after:1, name:'天賦2'},{before:1, after:1, name:'天賦3'}]
+        talents:[{before:1, after:1, name:'天賦（通常攻撃）'},{before:1, after:1, name:'天賦（元素スキル）'},{before:1, after:1, name:'天賦（元素爆発）'}]
       },
       result:{exp_book4:0 ,
               exp_book3:0 ,

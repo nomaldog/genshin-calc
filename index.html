@@ -12,9 +12,9 @@
     <!-- Vue.js -->
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script src="./app.js?version=0"></script>
+    <script src="./app.js?version=2021012301"></script>
     <!-- Personal CSS -->
-    <link rel="stylesheet" href="style.css?version=0">
+    <link rel="stylesheet" href="style.css?version=2021012301">
   </head>
   <body>
     <div id="app">
@@ -22,135 +22,147 @@
       <span style="display:none">{{ calcCost }}</span>
 
       <!--Contents-->
-      <div id="main_container" class="container container-fluid">
+      <div id="main_container" class="container container-fluid pb-3">
         <nav id="headnav" class="navbar navbar-expand-sm navbar-dark">
             <a href="#" class="navbar-brand">原神 キャラ育成コスト計算機</a>
         </nav>
 
-        <main role="main" class="container pb-3">
-          <div class="container">
-            <div class="form-group m-1">
+        <div class="container">
+          <form>
+            <div class="form-group m-1 mb-3">
               <div class="row">
-                <div class="col-sm-4">
+                <div class="col">
                   <label class="form-label">キャラクター</label>
-                  <div class="form-inline">
-                    <select v-model="input.character" class="form-control">
-                      <option v-for="character in characters" :value="character.name">{{ character.name }}</option>
-                    </select>
-                  </div>
                 </div>
               </div>
               <div class="row">
-                <div class="col-sm-6">
-                  <label class="form-label">レベル（突破時は☑）</label>
-                  <div class="form-inline">
-                    <input v-model="input.org" type="number" min="1" max="90" class="form-control mr-2" value="1">
-                    <input v-model="input.break_org"class="form-check-input " type="checkbox" value="">
-                    <label class="form-label">　→　</label>
-                    <input v-model="input.nxt" type="number" min="1" max="90" class="form-control mr-2" value="90">
-                    <input v-model="input.break_nxt" class="form-check-input" type="checkbox" value="">
-                  </div>
+                <div class="col-sm-3">
+                  <select v-model="input.character" class="form-control">
+                    <option v-for="character in characters" :value="character.name">{{ character.name }}</option>
+                  </select>
+                </div>
+              </div><!--div row-->
+            </div> <!--div form-group-->
+
+            <div class="form-group m-1 mb-3">
+              <div class="row">
+                <div class="col">
+                  <label class="form-label d-inline">レベル（突破時は☑）</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col">
+                  <input v-model="input.org" type="number" min="1" max="90" class="form-control sm-2 d-inline" value="1">
+                  <input v-model="input.break_org"class="form-check-input d-inline" type="checkbox" value="">
+                  <label class="form-label">→</label>
+                  <input v-model="input.nxt" type="number" min="1" max="90" class="form-control mr-2 d-inline" value="90">
+                  <input v-model="input.break_nxt" class="form-check-input d-inline" type="checkbox" value="">
+                </div>
+              </div><!--div row-->
+            </div> <!--div form-group-->
+
+            <div class="form-group m-1">
+              <div class="row">
+                <div v-for="talent in input.talents" class="col-sm-3">
+                  <label class="form-label mr-2">{{ talent.name }}</label>
                 </div>
               </div>
               <div class="row">
                 <div v-for="talent in input.talents" class="col-sm-3">
-                  <label class="form-label mr-2">{{ talent.name }}</label>
-                  <div class="form-inline">
-                    <select v-model="talent.before" class="form-control">
-                      <option v-for="talent in talent_list" :value="talent">{{ talent }}</option>
-                    </select>
-                    <label class="form-label">　→　</label>
-                    <select v-model="talent.after" class="form-control">
-                      <option v-for="talent in talent_list" :value="talent">{{ talent }}</option>
-                    </select>
-                  </div>
+                  <select v-model="talent.before" class="form-control d-inline" style="width: 75px;">
+                    <option v-for="talent in talent_list" :value="talent">{{ talent }}</option>
+                  </select>
+                  <label class="form-label d-inline">→</label>
+                  <select v-model="talent.after" class="form-control d-inline" style="width: 75px;">
+                    <option v-for="talent in talent_list" :value="talent">{{ talent }}</option>
+                  </select>
                 </div>
-              </div>
-            </div>
+              </div> <!--div row-->
+            </div> <!--div form-group-->
             <div id="result_message" v-bind:class="result.message_style">{{ result.message }}</div>
+          </form>
           </div>
 
-          <table class="table table-bordered m-2">
-            <thead>
-              <tr>
-                <th>経験値(大英雄★4)</th>
-                <th>経験値(冒険家★3)</th>
-                <th>経験値(流浪者★2)</th>
-                <th>モラ</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>{{ result.exp_book4 }}</td>
-                <td>{{ result.exp_book3 }}</td>
-                <td>{{ result.exp_book2 }}</td>
-                <td>{{ result.mora }}</td>
-              </tr>
-            </tbody>
-          </table>
-          
-          <table class="table table-bordered m-2">
-            <thead>
-              <tr>
-                <th>{{ selected_character.local_material}}</th>
-                <th>{{ selected_character.star1_material}}</th>
-                <th>{{ selected_character.star2_material}}</th>
-                <th>{{ selected_character.star3_material}}</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>{{ result.local_material }}</td>
-                <td>{{ result.demon1_material }}</td>
-                <td>{{ result.demon2_material }}</td>
-                <td>{{ result.demon3_material }}</td>
-              </tr>
-            </tbody>
-          </table>
+        <table class="table table-bordered m-2">
+          <thead>
+            <tr>
+              <th>経験値(大英雄★4)</th>
+              <th>経験値(冒険家★3)</th>
+              <th>経験値(流浪者★2)</th>
+              <th>モラ</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>{{ result.exp_book4 }}</td>
+              <td>{{ result.exp_book3 }}</td>
+              <td>{{ result.exp_book2 }}</td>
+              <td>{{ result.mora }}</td>
+            </tr>
+          </tbody>
+        </table>
+        
+        <table class="table table-bordered m-2">
+          <thead>
+            <tr>
+              <th>{{ selected_character.local_material}}</th>
+              <th>{{ selected_character.star1_material}}</th>
+              <th>{{ selected_character.star2_material}}</th>
+              <th>{{ selected_character.star3_material}}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>{{ result.local_material }}</td>
+              <td>{{ result.demon1_material }}</td>
+              <td>{{ result.demon2_material }}</td>
+              <td>{{ result.demon3_material }}</td>
+            </tr>
+          </tbody>
+        </table>
 
-          <table class="table table-bordered m-2">
-            <thead>
-              <tr>
-                <th>{{ selected_character.element }}精鋭魔物素材</th>
-                <th>{{ selected_character.element }}属性砕屑(★2)</th>
-                <th>{{ selected_character.element }}属性欠片(★3)</th>
-                <th>{{ selected_character.element }}属性塊(★4)</th>
-                <th>{{ selected_character.element }}属性クリスタル(★5)</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>{{ result.elite_material }}</td>
-                <td>{{ result.elem2_material }}</td>
-                <td>{{ result.elem3_material }}</td>
-                <td>{{ result.elem4_material }}</td>
-                <td>{{ result.elem5_material }}</td>
-              </tr>
-            </tbody>
-          </table>
+        <table class="table table-bordered m-2">
+          <thead>
+            <tr>
+              <th>{{ selected_character.element }}精鋭魔物素材</th>
+              <th>{{ selected_character.element }}属性砕屑(★2)</th>
+              <th>{{ selected_character.element }}属性欠片(★3)</th>
+              <th>{{ selected_character.element }}属性塊(★4)</th>
+              <th>{{ selected_character.element }}属性クリスタル(★5)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>{{ result.elite_material }}</td>
+              <td>{{ result.elem2_material }}</td>
+              <td>{{ result.elem3_material }}</td>
+              <td>{{ result.elem4_material }}</td>
+              <td>{{ result.elem5_material }}</td>
+            </tr>
+          </tbody>
+        </table>
 
-          <table class="table table-bordered m-2">
-            <thead>
-              <tr>
-                <th>{{ selected_character.talent }}(★2)</th>
-                <th>{{ selected_character.talent }}(★3)</th>
-                <th>{{ selected_character.talent }}(★4)</th>
-                <th>{{ selected_character.weekly }}</th>
-                <th>知恵の冠</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>{{ this.result.talent2_material }}</td>
-                <td>{{ this.result.talent3_material }}</td>
-                <td>{{ this.result.talent4_material }}</td>
-                <td>{{ this.result.weekly_material }}</td>
-                <td>{{ this.result.crown_material }}</td>
-              </tr>
-            </tbody>
-          </table>
-        </div><!-- main_container(Bootstrap) -->
-      </div><!-- app(Vue.js) -->
-    </main>
+        <table class="table table-bordered m-2">
+          <thead>
+            <tr>
+              <th>{{ selected_character.talent }}(★2)</th>
+              <th>{{ selected_character.talent }}(★3)</th>
+              <th>{{ selected_character.talent }}(★4)</th>
+              <th>{{ selected_character.weekly }}</th>
+              <th>知恵の冠</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>{{ this.result.talent2_material }}</td>
+              <td>{{ this.result.talent3_material }}</td>
+              <td>{{ this.result.talent4_material }}</td>
+              <td>{{ this.result.weekly_material }}</td>
+              <td>{{ this.result.crown_material }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div><!-- main_container(Bootstrap) -->
+    </div><!-- app(Vue.js) -->
   </body>
 </html>

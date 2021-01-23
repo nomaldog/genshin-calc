@@ -1,6 +1,6 @@
 [
     { "name": "なし",  "element": "",  "local_material": "特産品",  "star1_material": "通常素材(★1)",  "star2_material": "通常素材(★2)",  "star3_material": "通常素材(★3)",  "talent": "天賦専用巻物/本",  "weekly": "週次限定BOSS素材"}, 
-    { "name": "甘雨",  "element": "氷",  "local_material": "清心",  "star1_material": "トリックフラワーの蜜",  "star2_material": "微光花の蜜",  "star3_material": "原素花の蜜",  "talent": "勤勉巻物",  "weekly": "武煉の魂・孤影"}, 
+    { "name": "甘雨",  "element": "氷",  "local_material": "清心",  "star1_material": "トリックフラワーの蜜",  "star2_material": "微光花の蜜",  "star3_material": "原素花の蜜",  "talent": "勤労巻物",  "weekly": "武煉の魂・孤影"}, 
     { "name": "アルベド",  "element": "岩",  "local_material": "セシリアの花",  "star1_material": "占いの絵巻",  "star2_material": "封魔の絵巻",  "star3_material": "禁呪の絵巻",  "talent": "詩文",  "weekly": "吞天の鯨・只角"}, 
     { "name": "鍾離",  "element": "岩",  "local_material": "石珀",  "star1_material": "スライムの液体",  "star2_material": "スライムの分泌物",  "star3_material": "スライムのピュレ",  "talent": "黄金巻物",  "weekly": "吞天の鯨・只角"}, 
     { "name": "辛炎",  "element": "炎",  "local_material": "イグサ",  "star1_material": "宝探しの鴉マーク",  "star2_material": "シルバーの鴉マーク",  "star3_material": "ゴールドの鴉マーク",  "talent": "黄金巻物",  "weekly": "吞天の鯨・只角"}, 
@@ -10,7 +10,7 @@
     { "name": "バーバラ",  "element": "水",  "local_material": "慕風のマッシュルーム",  "star1_material": "占いの絵巻",  "star2_material": "封魔の絵巻",  "star3_material": "禁呪の絵巻",  "talent": "自由本",  "weekly": "北風のリング"}, 
     { "name": "北斗",  "element": "雷",  "local_material": "夜泊石",  "star1_material": "宝探しの鴉マーク",  "star2_material": "シルバーの鴉マーク",  "star3_material": "ゴールドの鴉マーク",  "talent": "黄金巻物",  "weekly": "東風の吐息"}, 
     { "name": "ベネット",  "element": "炎",  "local_material": "風車アスター",  "star1_material": "宝探しの鴉マーク",  "star2_material": "シルバーの鴉マーク",  "star3_material": "ゴールドの鴉マーク",  "talent": "抗争本",  "weekly": "東風の羽根"}, 
-    { "name": "重雲",  "element": "氷",  "local_material": "石珀",  "star1_material": "破損した仮面",  "star2_material": "汚れた仮面",  "star3_material": "不吉な仮面",  "talent": "勤勉巻物",  "weekly": "東風の吐息"}, 
+    { "name": "重雲",  "element": "氷",  "local_material": "石珀",  "star1_material": "破損した仮面",  "star2_material": "汚れた仮面",  "star3_material": "不吉な仮面",  "talent": "勤労巻物",  "weekly": "東風の吐息"}, 
     { "name": "ディルック",  "element": "炎",  "local_material": "イグサ",  "star1_material": "新兵の記章",  "star2_material": "士官の記章",  "star3_material": "尉官の記章",  "talent": "抗争本",  "weekly": "東風の羽根"}, 
     { "name": "フィッシュル",  "element": "雷",  "local_material": "イグサ",  "star1_material": "牢固な矢先",  "star2_material": "鋭利な矢先",  "star3_material": "歴戦の矢先",  "talent": "詩文",  "weekly": "北風の魂箱"}, 
     { "name": "ジン",  "element": "風",  "local_material": "蒲公英の種",  "star1_material": "破損した仮面",  "star2_material": "汚れた仮面",  "star3_material": "不吉な仮面",  "talent": "抗争本",  "weekly": "東風の羽根"}, 
@@ -27,6 +27,6 @@
     { "name": "主人公（風）",  "element": "風",  "local_material": "風車アスター",  "star1_material": "破損した仮面",  "star2_material": "汚れた仮面",  "star3_material": "不吉な仮面",  "talent": "天賦専用巻物/本",  "weekly": "東風の吐息"}, 
     { "name": "主人公（岩）",  "element": "岩",  "local_material": "風車アスター",  "star1_material": "破損した仮面",  "star2_material": "汚れた仮面",  "star3_material": "不吉な仮面",  "talent": "天賦専用巻物/本",  "weekly": "北風のしっぽ"}, 
     { "name": "ウェンティ",  "element": "風",  "local_material": "セシリアの花",  "star1_material": "スライムの液体",  "star2_material": "スライムの分泌物",  "star3_material": "スライムのピュレ",  "talent": "詩文",  "weekly": "北風のしっぽ"}, 
-    { "name": "香菱",  "element": "炎",  "local_material": "絶雲の唐辛子",  "star1_material": "スライムの液体",  "star2_material": "スライムの分泌物",  "star3_material": "スライムのピュレ",  "talent": "勤勉巻物",  "weekly": "東風の爪"}, 
+    { "name": "香菱",  "element": "炎",  "local_material": "絶雲の唐辛子",  "star1_material": "スライムの液体",  "star2_material": "スライムの分泌物",  "star3_material": "スライムのピュレ",  "talent": "勤労巻物",  "weekly": "東風の爪"}, 
     { "name": "行秋",  "element": "水",  "local_material": "霓裳花",  "star1_material": "破損した仮面",  "star2_material": "汚れた仮面",  "star3_material": "不吉な仮面",  "talent": "黄金巻物",  "weekly": "北風のしっぽ"}
 ]

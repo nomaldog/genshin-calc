@@ -15,3 +15,9 @@ tbody{
   background-color:#FFFFFF;
   color:#000000;
 }
+input[type="number"]{
+	width:75px;
+}
+select{
+	width:50px;
+}
