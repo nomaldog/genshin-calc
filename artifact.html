@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <!-- Basic Definition -->
+    <meta charset="utf-8">
+    <title>原神 聖遺物育成コスト計算機</title>
+    <!-- Bootstrap Default -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    <!-- Vue.js -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="./app_artifact.js?version=2021012303"></script>
+    <!-- Personal CSS -->
+    <link rel="stylesheet" href="style.css?version=2021012303">
+  </head>
+  <body>
+    <div id="app">
+      <!--Internal calculation-->
+      <span style="display:none">{{ calcCost }}</span>
+
+      <!--Contents-->
+      <div id="main_container" class="container container-fluid pb-3">
+        <nav id="headnav" class="navbar navbar-expand-sm navbar-dark">
+            <a href="#" class="navbar-brand">原神 聖遺物育成コスト計算機</a>
+        </nav>
+
+        <div class="container">
+          <form>
+            <div class="form-group m-1 mb-3">
+                <div class="row">
+                  <div class="col">
+                    <label class="form-label d-inline">レアリティ</label>
+                    <select v-model="input.rarity" class="form-control d-inline" style="width: 75px;">
+                      <option v-for="rarity in rarity_list">{{ rarity }}</option>
+                    </select>
+                  </div><!--div col-->
+                </div><!--div row-->
+              </div> <!--div form-group-->
+            </form>
+            <div class="form-group m-1 mb-3">
+              <div class="row">
+                <div class="col">
+                  <label class="form-label d-inline">レベル</label>
+                  <select v-model="input.before" class="form-control d-inline" style="width: 75px;">
+                    <option v-for="level in level_list">{{ level }}</option>
+                  </select>
+                  <label class="form-label d-inline">→</label>
+                  <select v-model="input.after" class="form-control d-inline" style="width: 75px;">
+                    <option v-for="level in level_list">{{ level }}</option>
+                  </select>
+                </div><!--div col-->
+              </div><!--div row-->
+            </div> <!--div form-group-->
+            <div id="result_message" v-bind:class="result.message_style">{{ result.message }}</div>
+          </form>
+        </div>
+
+        <table class="table table-bordered m-2">
+          <thead>
+            <tr>
+              <th>経験値(聖遺物★5)</th>
+              <th>経験値(聖遺物★4)</th>
+              <th>経験値(聖遺物★3)</th>
+              <th>経験値(聖遺物★2)</th>
+              <th>経験値(聖遺物★1)</th>
+              <th>モラ</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td v-for="artifact in result.artifacts">{{ artifact }}</td>
+              <td>{{ result.mora }}</td>
+            </tr>
+          </tbody>
+        </table>
+        
+      </div><!-- main_container(Bootstrap) -->
+    </div><!-- app(Vue.js) -->
+  </body>
+</html>
