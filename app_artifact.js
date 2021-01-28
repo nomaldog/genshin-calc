@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function(event) {
   var app = new Vue({
-    el: '#app',
+    el: '#app_artifact',
     data: {
       exp_table:null,
       rarity_list:[1,2,3,4,5],

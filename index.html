@@ -3,7 +3,7 @@
   <head>
     <!-- Basic Definition -->
     <meta charset="utf-8">
-    <title>原神 キャラ育成コスト計算機</title>
+    <title>原神 コスト計算機(キャラクター)</title>
     <!-- Bootstrap Default -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
@@ -12,20 +12,35 @@
     <!-- Vue.js -->
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script src="./app.js?version=2021012303"></script>
+    <script src="./app_character.js?version=2021012303"></script>
     <!-- Personal CSS -->
     <link rel="stylesheet" href="style.css?version=2021012303">
   </head>
   <body>
-    <div id="app">
+    <div id="app_character">
       <!--Internal calculation-->
       <span style="display:none">{{ calcCost }}</span>
 
       <!--Contents-->
       <div id="main_container" class="container container-fluid pb-3">
-        <nav id="headnav" class="navbar navbar-expand-sm navbar-dark">
-            <a href="#" class="navbar-brand">原神 キャラ育成コスト計算機</a>
-        </nav>
+          <!--Navbar Common Start-->
+          <nav class="navbar navbar-dark navbar-expand-sm" id="headnav">
+            <a class="navbar-brand" href="#">原神 コスト計算機</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+              <ul class="navbar-nav">
+                <li class="nav-item active">
+                  <a class="nav-link" href="./index.html">キャラクター</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="./artifact.html">聖遺物</a>
+                </li>
+              </ul>
+            </div>
+          </nav>
+          <!--Navbar Common End-->
 
         <div class="container">
           <form>

@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function(event) {
   var app = new Vue({
-    el: '#app',
+    el: '#app_character',
     data: {
       characters:null,
       exp_table:null,
