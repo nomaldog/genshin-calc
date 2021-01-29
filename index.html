@@ -1,183 +1,148 @@
 <!DOCTYPE html>
 <html lang="ja">
-  <head>
-    <!-- Basic Definition -->
-    <meta charset="utf-8">
-    <title>原神 コスト計算機(キャラクター)</title>
-    <!-- Bootstrap Default -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
-    <!-- Vue.js -->
-    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script src="./app_character.js?version=210128215009"></script>
-    <!-- Personal CSS -->
-    <link rel="stylesheet" href="style.css?version=210128215009">
-  </head>
-  <body>
-    <div id="app_character">
-      <!--Internal calculation-->
-      <span style="display:none">{{ calcCost }}</span>
-
-      <!--Contents-->
-      <div id="main_container" class="container container-fluid pb-3">
-          <!--Navbar Common Start-->
-          <nav class="navbar navbar-dark navbar-expand-sm" id="headnav">
-            <span class="navbar-brand">原神 コスト計算機</span>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+<head>
+  <!-- Basic Definition -->
+  <meta charset="utf-8">
+  <title>原神 コスト計算機(キャラクター)</title>
+  <!-- Bootstrap Default -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+  <!-- Vue.js -->
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="./app_character.js?version=210129221928"></script>
+  <!-- Personal CSS -->
+  <link rel="stylesheet" href="style.css?version=210129221928"> </head>
+<body>
+  <div id="app_character">
+    <span style="display:none">{{ calcCost }}</span>
+    <div id="main_container" class="container container-fluid pb-3">
+      <!--Navbar Common Start-->
+      <nav class="navbar navbar-dark navbar-expand-sm" id="headnav"> <span class="navbar-brand">原神 コスト計算機</span> <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-              <ul class="navbar-nav">
-                <li class="nav-item active">
-                  <a class="nav-link" href="./index.html">キャラクター</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="./artifact.html">聖遺物α</a>
-                </li>
-              </ul>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item active"> <a class="nav-link" href="./index.html">キャラクター</a> </li>
+            <li class="nav-item"> <a class="nav-link" href="./artifact.html">聖遺物β</a> </li>
+          </ul>
+        </div>
+      </nav>
+      <!--Navbar Common End-->
+      <div class="container">
+        <form>
+          <div class="form-group m-1 mb-3">
+            <div class="row">
+              <div class="col"> <label class="form-label">キャラクター</label> </div>
             </div>
-          </nav>
-          <!--Navbar Common End-->
-
-        <div class="container">
-          <form>
-            <div class="form-group m-1 mb-3">
-              <div class="row">
-                <div class="col">
-                  <label class="form-label">キャラクター</label>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-sm-3">
-                  <select v-model="input.character" class="form-control">
+            <div class="row">
+              <div class="col-sm-3"> <select v-model="input.character" class="form-control">
                     <option v-for="character in characters" :value="character.name">{{ character.name }}</option>
-                  </select>
-                </div>
-              </div><!--div row-->
-            </div> <!--div form-group-->
-
-            <div class="form-group m-1 mb-3">
-              <div class="row">
-                <div class="col">
-                  <label class="form-label d-inline">レベル（突破時は☑）</label>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col">
-                  <input v-model="input.org" type="number" min="1" max="90" class="form-control sm-2 d-inline" value="1">
-                  <input v-model="input.break_org"class="form-check-input d-inline" type="checkbox" value="">
-                  <label class="form-label">→</label>
-                  <input v-model="input.nxt" type="number" min="1" max="90" class="form-control mr-2 d-inline" value="90">
-                  <input v-model="input.break_nxt" class="form-check-input d-inline" type="checkbox" value="">
-                </div>
-              </div><!--div row-->
-            </div> <!--div form-group-->
-
-            <div class="form-group m-1">
-              <div class="row">
-                <div v-for="talent in input.talents" class="col-sm-3">
-                  <label class="form-label mr-2">{{ talent.name }}</label>
-                </div>
-              </div>
-              <div class="row">
-                <div v-for="talent in input.talents" class="col-sm-3">
-                  <select v-model="talent.before" class="form-control d-inline" style="width: 75px;">
-                    <option v-for="talent in talent_list" :value="talent">{{ talent }}</option>
-                  </select>
-                  <label class="form-label d-inline">→</label>
-                  <select v-model="talent.after" class="form-control d-inline" style="width: 75px;">
-                    <option v-for="talent in talent_list" :value="talent">{{ talent }}</option>
-                  </select>
-                </div>
-              </div> <!--div row-->
-            </div> <!--div form-group-->
-            <div id="result_message" v-bind:class="result.message_style">{{ result.message }}</div>
-          </form>
+                  </select> </div>
+            </div>
           </div>
-
-        <table class="table table-bordered m-2">
-          <thead>
-            <tr>
-              <th>経験値(大英雄★4)</th>
-              <th>経験値(冒険家★3)</th>
-              <th>経験値(流浪者★2)</th>
-              <th>モラ</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>{{ result.exp_book4 }}</td>
-              <td>{{ result.exp_book3 }}</td>
-              <td>{{ result.exp_book2 }}</td>
-              <td>{{ result.mora }}</td>
-            </tr>
-          </tbody>
-        </table>
-        
-        <table class="table table-bordered m-2">
-          <thead>
-            <tr>
-              <th>{{ selected_character.local_material}}</th>
-              <th>{{ selected_character.star1_material}}(★1)</th>
-              <th>{{ selected_character.star2_material}}(★2)</th>
-              <th>{{ selected_character.star3_material}}(★3)</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>{{ result.local_material }}</td>
-              <td>{{ result.demon1_material }}</td>
-              <td>{{ result.demon2_material }}</td>
-              <td>{{ result.demon3_material }}</td>
-            </tr>
-          </tbody>
-        </table>
-
-        <table class="table table-bordered m-2">
-          <thead>
-            <tr>
-              <th>{{ selected_character.element }}精鋭魔物素材</th>
-              <th>{{ selected_character.element }}属性砕屑(★2)</th>
-              <th>{{ selected_character.element }}属性欠片(★3)</th>
-              <th>{{ selected_character.element }}属性塊(★4)</th>
-              <th>{{ selected_character.element }}属性クリスタル(★5)</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>{{ result.elite_material }}</td>
-              <td>{{ result.elem2_material }}</td>
-              <td>{{ result.elem3_material }}</td>
-              <td>{{ result.elem4_material }}</td>
-              <td>{{ result.elem5_material }}</td>
-            </tr>
-          </tbody>
-        </table>
-
-        <table class="table table-bordered m-2">
-          <thead>
-            <tr>
-              <th>{{ selected_character.talent }}(★2)</th>
-              <th>{{ selected_character.talent }}(★3)</th>
-              <th>{{ selected_character.talent }}(★4)</th>
-              <th>{{ selected_character.weekly }}</th>
-              <th>知恵の冠</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>{{ this.result.talent2_material }}</td>
-              <td>{{ this.result.talent3_material }}</td>
-              <td>{{ this.result.talent4_material }}</td>
-              <td>{{ this.result.weekly_material }}</td>
-              <td>{{ this.result.crown_material }}</td>
-            </tr>
-          </tbody>
-        </table>
-      </div><!-- main_container(Bootstrap) -->
-    </div><!-- app(Vue.js) -->
-  </body>
+          <div class="form-group m-1 mb-3">
+            <div class="row">
+              <div class="col"> <label class="form-label">レベル（突破時は☑）</label> </div>
+            </div>
+            <div class="row">
+              <div class="col"> <input v-model="input.org" type="number" min="1" max="90" class="form-control sm-2 d-inline" value="1"> <input v-model="input.break_org" class="form-check-input d-inline" type="checkbox" value=""> <label class="form-label">→</label> <input v-model="input.nxt" type="number" min="1" max="90" class="form-control mr-2 d-inline" value="90"> <input v-model="input.break_nxt" class="form-check-input d-inline" type="checkbox" value=""> </div>
+            </div>
+          </div>
+          <div class="form-group m-1">
+            <div class="row">
+              <div v-for="talent in input.talents" class="col-sm-3"> <label class="form-label mr-2">{{ talent.name }}</label> </div>
+            </div>
+            <div class="row">
+              <div v-for="talent in input.talents" class="col-sm-3"> <select v-model="talent.before" class="form-control d-inline" style="width: 75px;">
+                    <option v-for="talent in talent_list" :value="talent">{{ talent }}</option>
+                  </select> <label class="form-label d-inline">→</label> <select v-model="talent.after" class="form-control d-inline" style="width: 75px;">
+                    <option v-for="talent in talent_list" :value="talent">{{ talent }}</option>
+                  </select> </div>
+            </div>
+          </div>
+          <div id="result_message" v-bind:class="result.message_style">{{ result.message }}</div>
+        </form>
+      </div>
+      <table class="table table-bordered m-2">
+        <thead>
+          <tr>
+            <th>経験値(大英雄★4)</th>
+            <th>経験値(冒険家★3)</th>
+            <th>経験値(流浪者★2)</th>
+            <th>モラ</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{{ result.exp_book4 }}</td>
+            <td>{{ result.exp_book3 }}</td>
+            <td>{{ result.exp_book2 }}</td>
+            <td>{{ result.mora }}</td>
+          </tr>
+        </tbody>
+      </table>
+      <table class="table table-bordered m-2">
+        <thead>
+          <tr>
+            <th>{{ selected_character.local_material}}</th>
+            <th>{{ selected_character.star1_material}}(★1)</th>
+            <th>{{ selected_character.star2_material}}(★2)</th>
+            <th>{{ selected_character.star3_material}}(★3)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{{ result.local_material }}</td>
+            <td>{{ result.demon1_material }}</td>
+            <td>{{ result.demon2_material }}</td>
+            <td>{{ result.demon3_material }}</td>
+          </tr>
+        </tbody>
+      </table>
+      <table class="table table-bordered m-2">
+        <thead>
+          <tr>
+            <th>{{ selected_character.element }}精鋭魔物素材</th>
+            <th>{{ selected_character.element }}属性砕屑(★2)</th>
+            <th>{{ selected_character.element }}属性欠片(★3)</th>
+            <th>{{ selected_character.element }}属性塊(★4)</th>
+            <th>{{ selected_character.element }}属性クリスタル(★5)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{{ result.elite_material }}</td>
+            <td>{{ result.elem2_material }}</td>
+            <td>{{ result.elem3_material }}</td>
+            <td>{{ result.elem4_material }}</td>
+            <td>{{ result.elem5_material }}</td>
+          </tr>
+        </tbody>
+      </table>
+      <table class="table table-bordered m-2">
+        <thead>
+          <tr>
+            <th>{{ selected_character.talent }}(★2)</th>
+            <th>{{ selected_character.talent }}(★3)</th>
+            <th>{{ selected_character.talent }}(★4)</th>
+            <th>{{ selected_character.weekly }}</th>
+            <th>知恵の冠</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{{ this.result.talent2_material }}</td>
+            <td>{{ this.result.talent3_material }}</td>
+            <td>{{ this.result.talent4_material }}</td>
+            <td>{{ this.result.weekly_material }}</td>
+            <td>{{ this.result.crown_material }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</body>
 </html>
